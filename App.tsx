@@ -7,6 +7,7 @@
  *
  * @format
  */
+//@ts-nocheck
 
 import React, {type PropsWithChildren} from 'react';
 import {
@@ -31,28 +32,11 @@ const Section: React.FC<
   PropsWithChildren<{
     title: string;
   }>
-> = ({children, title}) => {
-  const isDarkMode = useColorScheme() === 'dark';
+> = ({children}) => {
   return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        Test
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
+    <View className="mt-8 px-2">
+      <Text className="text-white mb-10">Test</Text>
+      <Text className="text-black-400 text-md font-bold mt-2">{children}</Text>
     </View>
   );
 };
@@ -70,9 +54,7 @@ const App = () => {
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}
       />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
+      <ScrollView contentInsetAdjustmentBehavior="automatic" className="mt-10">
         <Header />
         <View
           style={{
